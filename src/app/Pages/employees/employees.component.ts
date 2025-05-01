@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { EmployeeServiceService } from '../../Core/Services/employee-service.service';
 
 @Component({
   selector: 'app-employees',
@@ -8,5 +9,8 @@ import { Component } from '@angular/core';
   styleUrl: './employees.component.scss'
 })
 export class EmployeesComponent {
-
+private readonly _services = inject(EmployeeServiceService);
+ngOnInit(): void {
+  //this._services
+}
 }
