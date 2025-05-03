@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Employee } from '../Interfaces/employee';
 import { Observable, map } from 'rxjs';
+import { PaginatedEmployeeResponse } from '../Interfaces/PaginatedEmployeeResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +13,15 @@ export class EmployeeServiceService {
   constructor(private http: HttpClient) {}
 
   // Get all employees
-  getAll(params: { page: number; pageSize: number; id: number }): Observable<Employee[]> {
-    return this.http.post<any>(`${this.apiUrl}/paginate`, params).pipe(
-      map(response => response.result as Employee[]) );
+  getAll(params: { page: number; pageSize: number; id: number }): Observable<PaginatedEmployeeResponse> {
+    return this.http.post<PaginatedEmployeeResponse>(`${this.apiUrl}/paginate`, params).pipe(
+      map(response => response as PaginatedEmployeeResponse) );
   }
 
+  // getAll(params: { page: number; pageSize: number; id: number }): Observable<Employee[]> {
+  //   return this.http.post<any>(`${this.apiUrl}/paginate`, params).pipe(
+  //     map(response => response.result as Employee[]) );
+  // }
   // Add new employee
   add(employee: Omit<Employee, 'id'>): Observable<Employee> {
     return this.http.post<Employee>(`${this.apiUrl}/add`, employee);

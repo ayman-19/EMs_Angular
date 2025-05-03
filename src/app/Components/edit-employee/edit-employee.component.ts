@@ -13,7 +13,7 @@ import { Employee } from "../../Core/Interfaces/employee";
   styleUrls: ['./edit-employee.component.scss']
 })
 export class EditEmployeeComponent implements OnInit {
- 
+  public errorMessage: string = '';
   private readonly _Router=inject(Router);
   private readonly _ActivatedRoute=inject(ActivatedRoute)
 
@@ -38,11 +38,9 @@ export class EditEmployeeComponent implements OnInit {
         position: ['', Validators.required],
       });
 
-      this.employeeId = +this.route.snapshot.paramMap.get('id')!; // Assuming the ID is passed in the URL
-    // Fetch the employee data and populate the form
+      this.employeeId = +this.route.snapshot.paramMap.get('id')!;
     this._service.getById(this.employeeId).subscribe({
       next: (employee: Employee) => {
-        // Use patchValue to map the fetched data to the form
         this.employeeForm.patchValue({
           firstName: employee.firstName,
           lastName: employee.lastName,
@@ -66,8 +64,11 @@ export class EditEmployeeComponent implements OnInit {
             this._Router.navigate(['/employees']);
           },
           (error) => {
-            this.isloading = false;
-            
+            if (error.error && error.error.message) {
+              this.errorMessage = error.error.message;
+            } else {
+              this.errorMessage = 'An unexpected error occurred.';
+            }
           }
         );
       }
