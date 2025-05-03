@@ -12,11 +12,7 @@ import Swal from 'sweetalert2';
   selector: 'app-list',
   standalone: true,
   imports: [
-    RouterLink,
-    RouterLinkActive,
     CommonModule,
-    EmployeeFormComponent, 
-    EditEmployeeComponent, 
     FormsModule, 
     ReactiveFormsModule
 ],

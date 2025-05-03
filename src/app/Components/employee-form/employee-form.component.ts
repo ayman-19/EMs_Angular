@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-employee-form',
   standalone: true,
-  imports: [RouterLink, ReactiveFormsModule,  RouterLinkActive, CommonModule ],
+  imports: [ ReactiveFormsModule, CommonModule ],
   templateUrl: './employee-form.component.html',
   styleUrl: './employee-form.component.scss'
 })

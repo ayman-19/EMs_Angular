@@ -7,7 +7,7 @@ import { EditEmployeeComponent } from "../../Components/edit-employee/edit-emplo
 @Component({
   selector: 'app-employees',
   standalone: true,
-  imports: [EmployeeFormComponent, ListComponent, EditEmployeeComponent],
+  imports: [EmployeeFormComponent, ListComponent],
   templateUrl: './employees.component.html',
   styleUrl: './employees.component.scss'
 })
