@@ -1,0 +1,46 @@
+
+<div class="container-fluid ">
+  <h2>Edit Employee</h2>
+  <div class="Data">
+   <form (ngSubmit)="updateEmployee()" [formGroup]="employeeForm">
+      <label>
+        First Name:
+        <input type="text" formControlName="firstName" />
+        <div *ngIf="employeeForm.get('firstName')?.touched && employeeForm.get('firstName')?.invalid">
+          First name is required.
+        </div>
+      </label>
+
+      <label>
+        Last Name:
+        <input type="text" formControlName="lastName" />
+        <div *ngIf="employeeForm.get('lastName')?.touched && employeeForm.get('lastName')?.invalid">
+          Last name is required.
+        </div>
+      </label>
+
+      <label>
+        Email:
+        <input type="email" formControlName="email" />
+        <div *ngIf="employeeForm.get('email')?.touched && employeeForm.get('email')?.invalid">
+          Valid email is required.
+        </div>
+      </label>
+
+      <label>
+        Position:
+        <input type="text" formControlName="position" />
+        <div *ngIf="employeeForm.get('position')?.touched && employeeForm.get('position')?.invalid">
+          Position is required.
+        </div>
+      </label>
+
+      <div class="actions">
+        <button type="submit" [disabled]="isloading || employeeForm.invalid">
+          <span *ngIf="!isloading">Update<i class="bi me-3 bi-pencil-square"></i></span>
+          <span *ngIf="isloading">Loading ... </span>
+        </button>
+      </div>
+   </form>
+</div>
+</div>
