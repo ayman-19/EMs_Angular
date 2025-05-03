@@ -1,9 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { EmployeeServiceService } from '../../Core/Services/employee-service.service';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { EmployeeFormComponent } from '../employee-form/employee-form.component';
-import { EditEmployeeComponent } from '../edit-employee/edit-employee.component';
 import { Employee } from "../../Core/Interfaces/employee";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
@@ -75,7 +73,7 @@ export class ListComponent {
     this._router.navigate(['employees/add'])
   }
   closeEditModal(): void {
-    this.editModalVisible = false;  // Close the modal
+    this.editModalVisible = false;  
   }
   isLoad: boolean = false;
 
